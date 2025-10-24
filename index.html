@@ -12,78 +12,108 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:radial-gradient(800px 400px at 12% 10%, rgba(124,58,237,0.12), transparent), linear-gradient(180deg,var(--bg1),var(--bg2));color:#e8f1fb}
-    a{color:inherit}
-    .wrap{max-width:1200px;margin:0 auto;padding:36px}
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
 
     /* animated gradient background */
     .bg-anim{position:fixed;inset:0;z-index:-1;pointer-events:none;background:conic-gradient(from 180deg at 50% 50%, rgba(124,58,237,0.06), rgba(6,182,212,0.06), rgba(96,165,250,0.05), rgba(124,58,237,0.06));filter:blur(120px);opacity:0.9;animation:spin 45s linear infinite}
     @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
     /* header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:72px;height:72px;border-radius:16px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-family:Space Mono;font-size:20px}
-    h1{font-size:36px;margin:0}
-    .tag{color:var(--muted);font-size:14px}
+    header{display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
+    .brand{display:flex;flex-direction:column;gap:8px}
+    h1{font-size:clamp(24px, 5vw, 36px);margin:0;font-weight:800}
+    .tag{color:var(--muted);font-size:clamp(12px, 2.5vw, 14px)}
+    .header-meta{color:var(--muted);font-size:clamp(11px, 2vw, 13px);text-align:left}
 
     /* hero */
-    .hero{display:grid;grid-template-columns:1fr 460px;gap:28px;margin-top:22px;align-items:start}
-    .intro{padding:26px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.008));box-shadow:0 20px 50px rgba(2,6,23,0.6);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.03)}
-    .intro p{color:var(--muted);margin:12px 0 18px}
-    .chips{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--muted);backdrop-filter: blur(4px);border:1px solid rgba(255,255,255,0.02)}
-    .cta{display:flex;gap:10px;margin-top:12px}
-    .btn{padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:800}
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;margin-top:20px}
+    .intro{padding:20px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.008));box-shadow:0 20px 50px rgba(2,6,23,0.6);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.03)}
+    .intro p{color:var(--muted);margin:12px 0 18px;font-size:clamp(13px, 2.5vw, 15px);line-height:1.6}
+    
+    .intro-content{display:flex;flex-direction:column;gap:16px}
+    .intro-text{flex:1}
+    .intro-image{width:100%;max-width:240px;margin:0 auto;text-align:center}
+    .intro-image img{width:100%;border-radius:12px;box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+    
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{background:rgba(255,255,255,0.02);padding:6px 12px;border-radius:999px;font-size:clamp(11px, 2vw, 13px);color:var(--muted);backdrop-filter: blur(4px);border:1px solid rgba(255,255,255,0.02)}
+    .cta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+    .btn{padding:10px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:800;font-size:clamp(12px, 2.5vw, 14px);text-decoration:none;display:inline-block;text-align:center}
     .primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;box-shadow:0 8px 30px rgba(124,58,237,0.14)}
     .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
+    .intro-footer{margin-top:16px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+    .intro-footer .small{font-size:clamp(11px, 2vw, 13px)}
+
     /* right column */
     .card{background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.008));padding:16px;border-radius:14px}
-    .meta{display:flex;gap:12px;align-items:center}
-    .avatar{width:88px;height:88px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-family:Space Mono}
-    .small{color:var(--muted);font-size:13px}
-
-    /* 3D tilt + reveal */
-    .project, .card{transform:translateZ(0);transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s}
-    .tilt{will-change:transform}
-    .tilt:hover{transform:translateY(-8px) translateZ(6px) scale(1.01);box-shadow:0 30px 60px rgba(2,6,23,0.6)}
+    .meta{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+    .small{color:var(--muted);font-size:clamp(11px, 2vw, 13px);line-height:1.5}
 
     /* timeline / experience */
-    .timeline{margin-top:18px;display:flex;flex-direction:column;gap:12px}
-    .exp{display:flex;gap:14px}
-    .exp .left{width:120px;color:var(--muted);font-size:13px}
-    .exp .right{flex:1;padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02)}
-    .exp h4{margin:0 0 6px}
-    .exp ul{margin:6px 0 0;padding-left:18px;color:var(--muted)}
+    .timeline{margin-top:16px;display:flex;flex-direction:column;gap:16px}
+    .exp{display:flex;flex-direction:column;gap:8px}
+    .exp .left{color:var(--muted);font-size:clamp(11px, 2vw, 13px);font-weight:600}
+    .exp .right{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02)}
+    .exp h4{margin:0 0 6px;font-size:clamp(14px, 3vw, 16px)}
+    .exp ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:clamp(12px, 2.5vw, 14px)}
+    .exp ul li{margin-bottom:6px}
 
     /* projects */
-    section.projects{margin-top:26px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-    .project{padding:14px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02);overflow:hidden}
-    .project:hover{box-shadow:0 30px 60px rgba(2,6,23,0.55);transform:translateY(-10px)}
-    .project h3{margin:0 0 8px}
-    .project p{color:var(--muted);font-size:14px;margin:0}
-    .project .tech{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-    .tag2{background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted)}
+    section.projects{margin-top:32px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%, 280px),1fr));gap:16px;margin-top:16px}
+    .project{padding:16px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02);overflow:hidden;transition:transform .28s, box-shadow .28s}
+    .project:hover{box-shadow:0 30px 60px rgba(2,6,23,0.55);transform:translateY(-4px)}
+    .project h3{margin:0 0 8px;font-size:clamp(16px, 3.5vw, 18px)}
+    .project p{color:var(--muted);font-size:clamp(12px, 2.5vw, 14px);margin:0;line-height:1.5}
+    .project .tech{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag2{background:rgba(255,255,255,0.02);padding:4px 8px;border-radius:8px;font-size:clamp(10px, 2vw, 12px);color:var(--muted)}
 
-    .thumb{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;border:1px solid rgba(255,255,255,0.03)}
+    .thumb{width:100%;height:clamp(120px, 25vw, 140px);object-fit:cover;border-radius:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.03)}
 
     /* publication */
-    .pub{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.01);border:1px dashed rgba(255,255,255,0.02)}
+    .pub{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;background:rgba(255,255,255,0.01);border:1px dashed rgba(255,255,255,0.02);margin-top:16px}
+    .pub img{width:clamp(60px, 15vw, 92px);height:clamp(60px, 15vw, 92px);border-radius:10px;object-fit:cover;flex-shrink:0}
+    .pub-content{flex:1;min-width:0}
+    .pub-content div:first-child{font-weight:900;font-size:clamp(13px, 3vw, 15px)}
 
     /* gallery */
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px}
+    .gallery img{width:100%;height:clamp(100px, 20vw, 140px);object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
 
     /* contact */
-    .contact-grid{display:flex;gap:12px;flex-wrap:wrap}
-    .contact-card{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02)}
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 260px),1fr));gap:12px;margin-top:16px}
+    .contact-card{padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02)}
+    .contact-card > div:first-child{font-weight:900;margin-bottom:8px;font-size:clamp(13px, 3vw, 15px)}
 
     /* reveal animation */
     .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    @media (max-width:980px){.hero{grid-template-columns:1fr}.brand h1{font-size:22px}.gallery{grid-template-columns:repeat(2,1fr)}}
+    h2{font-size:clamp(20px, 4vw, 28px);margin:0 0 8px;font-weight:800}
+    
+    section{margin-top:32px}
+
+    footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--muted);font-size:clamp(11px, 2vw, 13px);border-top:1px solid rgba(255,255,255,0.03)}
+
+    /* Desktop improvements */
+    @media (min-width:768px){
+      .wrap{padding:36px}
+      header{flex-direction:row;align-items:center;justify-content:space-between}
+      .header-meta{text-align:right}
+      .intro-content{flex-direction:row;align-items:flex-start}
+      .intro-image{margin:0}
+      .intro-footer{flex-direction:row;align-items:center;justify-content:space-between}
+      .exp{flex-direction:row}
+      .exp .left{width:120px;flex-shrink:0}
+      .hero{grid-template-columns:1fr 460px}
+    }
+
+    @media (min-width:1024px){
+      .gallery{grid-template-columns:repeat(3,1fr)}
+    }
   </style>
 </head>
 <body>
@@ -92,19 +122,17 @@
   <main class="wrap">
     <header>
       <div class="brand">
-        <div>
-          <h1>Alireza Amouzad</h1>
-          <div class="tag">Machine Learning Engineer — Research + Production</div>
-        </div>
+        <h1>Alireza Amouzad</h1>
+        <div class="tag">Machine Learning Engineer — Research + Production</div>
       </div>
-      <div class="small">Based in Tehran, Iran • <a href="https://github.com/aramiracle" target="_blank">github.com/aramiracle</a></div>
+      <div class="header-meta">Based in Tehran, Iran<br><a href="https://github.com/aramiracle" target="_blank">github.com/aramiracle</a></div>
     </header>
 
     <div class="hero">
-      <div class="intro card tilt reveal">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
-          <div style="flex:1">
-            <div style="font-weight:900;font-size:18px">Summary</div>
+      <div class="intro card reveal">
+        <div class="intro-content">
+          <div class="intro-text">
+            <div style="font-weight:900;font-size:clamp(16px,3.5vw,18px)">Summary</div>
             <p>Results-driven ML Engineer with 3+ years of experience in research and production. I build models (GIUNet), production ML microservices, and scalable inference pipelines — bridging research rigor with engineering reliability. I focus on interpretability, reproducibility, and shipping features that move product metrics.</p>
 
             <div class="chips">
@@ -121,31 +149,28 @@
             </div>
           </div>
 
-          <div style="width:240px;text-align:center">
-            <!-- hero image (local) with fallback -->
-            <img src="images/ai_hero.jpg" alt="AI illustration" style="width:100%;border-radius:12px;box-shadow:0 18px 40px rgba(2,6,23,0.6)" onerror="this.src='images/paper.jpg'">
+          <div class="intro-image">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Crect fill='%237c3aed' width='240' height='240'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='48' font-weight='bold'%3EAI/ML%3C/text%3E%3C/svg%3E" alt="AI illustration">
             <div class="small" style="margin-top:8px">AI / ML Engineer</div>
           </div>
         </div>
 
-        <div style="margin-top:16px;display:flex;gap:10px;align-items:center;justify-content:space-between">
+        <div class="intro-footer">
           <div class="small">Open-source & writing: <a href="https://medium.com/@a.r.amouzad.m" target="_blank">Medium</a> • <a href="https://ir.linkedin.com/in/alireza-amouzad-71104b82" target="_blank">LinkedIn</a></div>
-          <div>
-            <a class="btn primary" href="./Alireza_Amouzad_Resume.pdf" download>Download Resume</a>
-          </div>
+          <a class="btn primary" href="#" onclick="alert('Resume download would trigger here');return false">Download Resume</a>
         </div>
       </div>
 
       <aside class="reveal">
-        <div class="card tilt">
+        <div class="card">
           <div class="meta">
             <div>
-              <div style="font-weight:900">Machine Learning Engineer</div>
+              <div style="font-weight:900;font-size:clamp(14px,3vw,16px)">Machine Learning Engineer</div>
               <div class="small">MSc in AI — Amirkabir University • Published: Expert Systems (2024)</div>
             </div>
           </div>
 
-          <div class="timeline" style="margin-top:12px">
+          <div class="timeline">
             <div class="exp">
               <div class="left">Aug 2023 — Mar 2025</div>
               <div class="right">
@@ -169,75 +194,60 @@
               </div>
             </div>
           </div>
-
         </div>
 
-        <div style="height:14px"></div>
-
         <div class="card pub">
-          <div style="flex:1;display:flex;gap:12px;align-items:center">
-            <img src="images/paper.jpg" alt="paper" style="width:92px;height:92px;border-radius:10px;object-fit:cover" onerror="this.src='images/ai_hero.jpg'">
-            <div>
-              <div style="font-weight:900">GIUNet Publication</div>
-              <div class="small">Graph Isomorphism U‑Net — Expert Systems With Applications, 2024 • <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417423017827" target="_blank">Read paper</a></div>
-            </div>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='92'%3E%3Crect fill='%2306b6d4' width='92' height='92'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='32' font-weight='bold'%3E📄%3C/text%3E%3C/svg%3E" alt="paper">
+          <div class="pub-content">
+            <div>GIUNet Publication</div>
+            <div class="small">Graph Isomorphism U‑Net — Expert Systems With Applications, 2024 • <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417423017827" target="_blank">Read paper</a></div>
           </div>
         </div>
       </aside>
     </div>
 
     <section id="projects" class="projects reveal">
-      <h2 style="margin:0 0 8px">Selected Projects</h2>
+      <h2>Selected Projects</h2>
       <div class="small">Projects pulled from my resume — reproducible repos and demos.</div>
-      <div class="grid" style="margin-top:12px">
-        <div class="project tilt">
-          <img class="thumb" src="images/image_similarity.jpg" alt="image similarity" onerror="this.src='images/paper.jpg'">
+      <div class="grid">
+        <div class="project">
+          <img class="thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='140'%3E%3Crect fill='%237c3aed' width='300' height='140'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-weight='bold'%3EImage Similarity%3C/text%3E%3C/svg%3E" alt="image similarity">
           <h3>Image Similarity Search — SigLIP2 + CLIP</h3>
           <p>Production-ready multimodal retrieval using SigLIP2+CLIP embeddings, Milvus vector store, and MinIO for S3 storage. Async embeddings, batch indexing, FastAPI endpoints and Gradio UI.</p>
           <div class="tech"><span class="tag2">PyTorch</span><span class="tag2">FastAPI</span><span class="tag2">Milvus</span><span class="tag2">Docker</span></div>
           <div style="margin-top:10px"><a href="https://github.com/aramiracle/multimodal-rag" target="_blank">Repo →</a></div>
         </div>
 
-        <div class="project tilt">
-          <img class="thumb" src="images/paper.jpg" alt="giunet" onerror="this.src='images/ai_hero.jpg'">
+        <div class="project">
+          <img class="thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='140'%3E%3Crect fill='%2306b6d4' width='300' height='140'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-weight='bold'%3EGIUNet%3C/text%3E%3C/svg%3E" alt="giunet">
           <h3>GIUNet — Graph Isomorphism U‑Net</h3>
           <p>My MSc thesis — a novel U‑Net style GNN with pqPooling achieving strong results on MUTAG, PTC, ENZYMES. Includes training scripts and analysis notebooks.</p>
           <div class="tech"><span class="tag2">PyTorch</span><span class="tag2">PyG</span><span class="tag2">GNN</span></div>
           <div style="margin-top:10px"><a href="https://github.com/aramiracle/GIUNet" target="_blank">Repo →</a></div>
         </div>
 
-        <div class="project tilt">
-          <img class="thumb" src="images/poetry.jpg" alt="ghazal agent" onerror="this.src='images/paper.jpg'">
+        <div class="project">
+          <img class="thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='140'%3E%3Crect fill='%239333ea' width='300' height='140'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-weight='bold'%3EPoetry Agent%3C/text%3E%3C/svg%3E" alt="ghazal agent">
           <h3>Persian Ghazal Criticizer Agent</h3>
           <p>An agent built with LangChain and Gradio for automated critique of Persian ghazals — parallel evaluation pipelines and structured outputs.</p>
           <div class="tech"><span class="tag2">LangChain</span><span class="tag2">FastAPI</span><span class="tag2">Gradio</span></div>
           <div style="margin-top:10px"><a href="https://github.com/aramiracle/ghazal_critique_agent" target="_blank">Repo →</a></div>
         </div>
 
-        <div class="project tilt">
-          <img class="thumb" src="images/rl.jpg" alt="rl games" onerror="this.src='images/paper.jpg'">
+        <div class="project">
+          <img class="thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='140'%3E%3Crect fill='%2314b8a6' width='300' height='140'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18' font-weight='bold'%3ERL Games%3C/text%3E%3C/svg%3E" alt="rl games">
           <h3>Connect Four &amp; Pentago (RL)</h3>
           <p>Self‑play RL agents trained with DQN-style algorithms and PyTorch; GUI with PyQt for play & visualization.</p>
           <div class="tech"><span class="tag2">RL</span><span class="tag2">PyTorch</span><span class="tag2">Gym</span></div>
           <div style="margin-top:10px"><a href="https://github.com/aramiracle/connect_four_with_rl" target="_blank">Connect Four →</a> • <a href="https://github.com/aramiracle/pentago_with_rl" target="_blank">Pentago →</a></div>
         </div>
       </div>
-
-      <div style="margin-top:18px" class="card">
-        <div style="display:flex;align-items:center;gap:12px">
-          <img src="images/paper.jpg" alt="paper" style="width:92px;height:92px;border-radius:10px;object-fit:cover" onerror="this.src='images/ai_hero.jpg'">
-          <div>
-            <div style="font-weight:900">GIUNet Publication</div>
-            <div class="small">Graph Isomorphism U‑Net — Expert Systems With Applications, 2024 • <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417423017827" target="_blank">Read paper</a></div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section class="reveal" style="margin-top:26px">
-      <h2 style="margin:0 0 8px">Skills & Tools</h2>
+    <section class="reveal">
+      <h2>Skills & Tools</h2>
       <div class="small">Languages, frameworks, and tools I use in production</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
         <div class="chip">Python</div>
         <div class="chip">PyTorch</div>
         <div class="chip">HuggingFace</div>
@@ -252,38 +262,38 @@
       </div>
 
       <div class="gallery">
-        <img src="images/medical.jpg" alt="medical imaging" onerror="this.src='images/paper.jpg'">
-        <img src="images/fashion.jpg" alt="fashion-clothes" onerror="this.src='images/paper.jpg'">
-        <img src="images/mind.jpg" alt="poetry calligraphy" onerror="this.src='images/paper.jpg'">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Crect fill='%23dc2626' width='200' height='140'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EMedical%3C/text%3E%3C/svg%3E" alt="medical imaging">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Crect fill='%23ea580c' width='200' height='140'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EFashion%3C/text%3E%3C/svg%3E" alt="fashion-clothes">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Crect fill='%235b21b6' width='200' height='140'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EPoetry%3C/text%3E%3C/svg%3E" alt="poetry calligraphy">
       </div>
     </section>
 
-    <section style="margin-top:26px" id="contact" class="reveal">
-      <h2 style="margin:0 0 8px">Contact & Links</h2>
+    <section id="contact" class="reveal">
+      <h2>Contact & Links</h2>
       <div class="small">I'm happy to collaborate on research, production ML, or open-source projects.</div>
-      <div class="contact-grid" style="margin-top:12px">
-        <div class="contact-card card" style="min-width:260px">
-          <div style="font-weight:900">Email</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div>Email</div>
           <div class="small">a.r.amouzad.m@gmail.com</div>
-          <div style="margin-top:10px;font-weight:900">Resume</div>
-          <div class="small"><a class="primary" href="./Alireza_Amouzad_Resume.pdf" download style="display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;text-decoration:none;margin-top:6px">Download Full Resume</a></div>
+          <div style="margin-top:12px;font-weight:900;font-size:clamp(13px,3vw,15px)">Resume</div>
+          <a class="btn primary" href="#" onclick="alert('Resume download');return false" style="margin-top:8px;display:inline-block">Download Full Resume</a>
         </div>
 
-        <div class="contact-card card" style="min-width:260px">
-          <div style="font-weight:900">Profiles</div>
+        <div class="contact-card">
+          <div>Profiles</div>
           <div class="small"><a href="https://github.com/aramiracle" target="_blank">GitHub</a></div>
           <div class="small"><a href="https://ir.linkedin.com/in/alireza-amouzad-71104b82" target="_blank">LinkedIn</a></div>
           <div class="small"><a href="https://medium.com/@a.r.amouzad.m" target="_blank">Medium</a></div>
         </div>
 
-        <div class="contact-card card" style="flex:1;min-width:300px">
-          <div style="font-weight:900">Quick CV</div>
+        <div class="contact-card">
+          <div>Quick CV</div>
           <div class="small">MSc in AI (Amirkabir University), Thesis: GIUNet (pqPooling). Published: Expert Systems With Applications (2024).</div>
         </div>
       </div>
     </section>
 
-    <footer style="margin-top:28px">© <span id="year"></span> Alireza Amouzad • Built with care — fork & customize this template on GitHub</footer>
+    <footer>© <span id="year"></span> Alireza Amouzad • Built with care</footer>
   </main>
 
   <script>
@@ -297,7 +307,7 @@
     reveals.forEach(r=>io.observe(r));
 
     // small keyboard shortcut: press 'r' to download resume
-    window.addEventListener('keydown', (e)=>{ if(e.key==='r'){ window.location.href='./Alireza_Amouzad_Resume.pdf' } })
+    window.addEventListener('keydown', (e)=>{ if(e.key==='r'){ alert('Resume download would trigger here') } })
   </script>
 </body>
 </html>
