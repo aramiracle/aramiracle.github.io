@@ -123,8 +123,8 @@
           </div>
 
           <div style="width:240px;text-align:center">
-            <!-- hero image relevant to ML -->
-            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981f?auto=format&fit=crop&w=800&q=80" alt="AI illustration" style="width:100%;border-radius:12px;box-shadow:0 18px 40px rgba(2,6,23,0.6)">
+            <!-- hero image (local) -->
+            <img src="images/ai_hero.jpg" alt="AI illustration" style="width:100%;border-radius:12px;box-shadow:0 18px 40px rgba(2,6,23,0.6)">
             <div class="small" style="margin-top:8px">AI systems, model lifecycle & deployment</div>
           </div>
         </div>
@@ -177,10 +177,12 @@
         <div style="height:14px"></div>
 
         <div class="card pub">
-          <div style="flex:1">
-            <div style="font-weight:900">Publication</div>
-            <div class="small">Graph Isomorphism U‑Net — Expert Systems With Applications, 2024</div>
-            <div style="margin-top:8px"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417423017827" target="_blank" class="small">Read paper →</a></div>
+          <div style="flex:1;display:flex;gap:12px;align-items:center">
+            <img src="images/paper.jpg" alt="paper" style="width:92px;height:92px;border-radius:10px;object-fit:cover">
+            <div>
+              <div style="font-weight:900">GIUNet Publication</div>
+              <div class="small">Graph Isomorphism U‑Net — Expert Systems With Applications, 2024 • <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417423017827" target="_blank">Read paper</a></div>
+            </div>
           </div>
         </div>
       </aside>
@@ -191,7 +193,7 @@
       <div class="small">Projects pulled from my resume — reproducible repos and demos.</div>
       <div class="grid" style="margin-top:12px">
         <div class="project tilt">
-          <img class="thumb" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80" alt="image similarity">
+          <img class="thumb" src="images/image_similarity.jpg" alt="image similarity">
           <h3>Image Similarity Search — SigLIP2 + CLIP</h3>
           <p>Production-ready multimodal retrieval using SigLIP2+CLIP embeddings, Milvus vector store, and MinIO for S3 storage. Async embeddings, batch indexing, FastAPI endpoints and Gradio UI.</p>
           <div class="tech"><span class="tag2">PyTorch</span><span class="tag2">FastAPI</span><span class="tag2">Milvus</span><span class="tag2">Docker</span></div>
@@ -199,7 +201,7 @@
         </div>
 
         <div class="project tilt">
-          <img class="thumb" src="https://images.unsplash.com/photo-1581093588401-2b9b4a9f8b6f?auto=format&fit=crop&w=1400&q=80" alt="giunet">
+          <img class="thumb" src="images/giunet.jpg" alt="giunet">
           <h3>GIUNet — Graph Isomorphism U‑Net</h3>
           <p>My MSc thesis — a novel U‑Net style GNN with pqPooling achieving strong results on MUTAG, PTC, ENZYMES. Includes training scripts and analysis notebooks.</p>
           <div class="tech"><span class="tag2">PyTorch</span><span class="tag2">PyG</span><span class="tag2">GNN</span></div>
@@ -207,7 +209,7 @@
         </div>
 
         <div class="project tilt">
-          <img class="thumb" src="https://images.unsplash.com/photo-1520975913275-7c34f62e9a88?auto=format&fit=crop&w=1400&q=80" alt="ghazal agent">
+          <img class="thumb" src="images/ghazal.jpg" alt="ghazal agent">
           <h3>Persian Ghazal Criticizer Agent</h3>
           <p>An agent built with LangChain and Gradio for automated critique of Persian ghazals — parallel evaluation pipelines and structured outputs.</p>
           <div class="tech"><span class="tag2">LangChain</span><span class="tag2">FastAPI</span><span class="tag2">Gradio</span></div>
@@ -215,7 +217,7 @@
         </div>
 
         <div class="project tilt">
-          <img class="thumb" src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80" alt="rl games">
+          <img class="thumb" src="images/rl.jpg" alt="rl games">
           <h3>Connect Four &amp; Pentago (RL)</h3>
           <p>Self‑play RL agents trained with DQN-style algorithms and PyTorch; GUI with PyQt for play & visualization.</p>
           <div class="tech"><span class="tag2">RL</span><span class="tag2">PyTorch</span><span class="tag2">Gym</span></div>
@@ -225,7 +227,7 @@
 
       <div style="margin-top:18px" class="card">
         <div style="display:flex;align-items:center;gap:12px">
-          <img src="https://images.unsplash.com/photo-1588774066266-1b2f3e2f1e2a?auto=format&fit=crop&w=800&q=80" alt="paper" style="width:92px;height:92px;border-radius:10px;object-fit:cover">
+          <img src="images/paper.jpg" alt="paper" style="width:92px;height:92px;border-radius:10px;object-fit:cover">
           <div>
             <div style="font-weight:900">GIUNet Publication</div>
             <div class="small">Graph Isomorphism U‑Net — Expert Systems With Applications, 2024 • <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417423017827" target="_blank">Read paper</a></div>
@@ -252,9 +254,9 @@
       </div>
 
       <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1581091012184-8bd6f86a2b1a?auto=format&fit=crop&w=1400&q=80" alt="medical imaging">
-        <img src="https://images.unsplash.com/photo-1528360983277-3d7b8a4b3dd3?auto=format&fit=crop&w=1400&q=80" alt="fashion-clothes">
-        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=80" alt="poetry calligraphy">
+        <img src="images/medical.jpg" alt="medical imaging">
+        <img src="images/fashion.jpg" alt="fashion-clothes">
+        <img src="images/poetry.jpg" alt="poetry calligraphy">
       </div>
     </section>
 
