@@ -1,0 +1,303 @@
+<!--
+Single-file GitHub Pages site
+Filename: index.html
+Instructions: put this file in the root of a repository named <your-username>.github.io,
+commit & push to GitHub, and the site will be published automatically.
+
+Replace placeholders: YOUR NAME, YOUR_SHORT_BIO, social links, project links, resume link.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Your Name — ML Engineer & Creative Technologist</title>
+  <meta name="description" content="Portfolio of Your Name — machine learning engineer, maker, and storyteller.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#7c3aed; --glass: rgba(255,255,255,0.04);
+      --light-bg:#f7f9fc; --light-card:#ffffff; --light-text:#0b1220;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    body{background:linear-gradient(180deg,var(--bg) 0%, #071027 60%);color:#e6eef8;line-height:1.5;-webkit-font-smoothing:antialiased}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+
+    /* Top nav */
+    header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:800;color:white}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    nav a:hover{color:white}
+    .theme-toggle{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:6px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:18px}
+    .hero-left h1{font-family:'Playfair Display',serif;font-size:48px;margin:0 0 8px}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:white}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px;box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    .profile{display:flex;gap:14px;align-items:center}
+    .avatar{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,#a78bfa,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:20px}
+    .small{color:var(--muted);font-size:13px}
+
+    /* projects */
+    section{margin-top:30px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .project{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));cursor:pointer;border:1px solid rgba(255,255,255,0.03)}
+    .project h3{margin:6px 0 8px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03)}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:10px}
+
+    /* footer */
+    footer{padding:28px 0;color:var(--muted);font-size:13px;text-align:center}
+
+    /* modal */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.7);display:none;align-items:center;justify-content:center}
+    .modal.open{display:flex}
+    .modal-card{width:min(900px,96%);background:var(--card);padding:20px;border-radius:12px}
+
+    /* responsive */
+    @media (max-width:880px){.hero{grid-template-columns:1fr;}.gallery{grid-template-columns:repeat(2,1fr)}.hero-left h1{font-size:36px}}
+
+    /* playful accents */
+    .gradient-line{height:6px;border-radius:4px;background:linear-gradient(90deg,#06b6d4,var(--accent))}
+
+    /* typewriter */
+    .typewriter{font-weight:700;color:#fff}
+    .muted-block{background:var(--glass);padding:10px;border-radius:8px}
+
+    /* dark/light toggle styles handled by body class */
+    body.light{background:var(--light-bg);color:var(--light-text)}
+    body.light .card{background:var(--light-card);box-shadow:none}
+    body.light nav a{color:#475569}
+    body.light .small{color:#64748b}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark">YA</div>
+        <div>
+          <div style="font-weight:700">Your Name</div>
+          <div class="small">ML Engineer • Creative Technologist</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle">Toggle</button>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div class="hero-left">
+          <h1>Hi — I'm <span style="color:var(--accent)">Your Name</span></h1>
+          <p class="small">I build machine learning systems that people actually use. I blend research-grade modeling with production software engineering to ship delightful, reliable ML features.</p>
+
+          <div class="card" style="margin-top:18px">
+            <div class="profile">
+              <div class="avatar">YA</div>
+              <div>
+                <div style="font-weight:700">Your Short Bio</div>
+                <div class="small">Open-source: <a href="#" style="color:inherit;opacity:0.9">github.com/yourname</a> • Published: Expert Systems (2024)</div>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;display:flex;gap:10px;align-items:center;justify-content:space-between">
+              <div class="small">Type: <span class="typewriter" id="typeWriter"></span></div>
+              <div class="small">Location: Baku • Available: Open to opportunities</div>
+            </div>
+
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <a class="btn btn-primary" href="#projects">View Projects</a>
+              <a class="btn btn-ghost" href="#contact">Contact</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <div class="card">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+              <div style="font-weight:700">Selected Work</div>
+              <div class="small">Curated • Production-ready</div>
+            </div>
+            <div class="grid">
+              <div class="project" onclick="openProject(1)">
+                <h3>Image Similarity • SigLIP+CLIP</h3>
+                <div class="small">Recall@10: 0.87 • latency 120ms</div>
+                <div class="tags" style="margin-top:8px"><span class="tag">Python</span><span class="tag">CLIP</span><span class="tag">Milvus</span></div>
+              </div>
+
+              <div class="project" onclick="openProject(2)">
+                <h3>GIUNet — Graph Iso U‑Net</h3>
+                <div class="small">Published: Expert Systems, 2024</div>
+                <div class="tags" style="margin-top:8px"><span class="tag">PyTorch</span><span class="tag">GNN</span><span class="tag">Paper</span></div>
+              </div>
+
+              <div class="project" onclick="openProject(3)">
+                <h3>Fashion Tagger • CLIP Tags</h3>
+                <div class="small">Organized 60k images by style</div>
+                <div class="tags" style="margin-top:8px"><span class="tag">CLIP</span><span class="tag">FastAPI</span><span class="tag">Docker</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:16px"></div>
+
+          <div class="card">
+            <div style="font-weight:700;margin-bottom:8px">Gallery</div>
+            <div class="gallery">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=60" alt="">
+              <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=800&q=60" alt="">
+              <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=60" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- projects full -->
+      <section id="projects">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <h2 style="margin:0">Projects</h2>
+          <div class="small">Click a project to open details</div>
+        </div>
+        <div class="gradient-line" style="margin-top:12px"></div>
+
+        <div class="grid" style="margin-top:18px">
+          <div class="project card" onclick="openProject(1)">
+            <h3>Image Similarity Search</h3>
+            <p class="small">Fast large-scale image retrieval using combined SigLIP2 and CLIP embeddings. Deployed with Milvus and FastAPI.</p>
+          </div>
+          <div class="project card" onclick="openProject(2)">
+            <h3>GIUNet (Published)</h3>
+            <p class="small">Graph Isomorphism U-Net for graph classification problems. Repro scripts and notebooks included.</p>
+          </div>
+          <div class="project card" onclick="openProject(3)">
+            <h3>Fashion Tagger</h3>
+            <p class="small">CLIP-based tagger and recommender for clothing images with a two-level taxonomy and top-k matching.</p>
+          </div>
+          <div class="project card" onclick="openProject(4)">
+            <h3>Persian Ghazal Criticizer Agent</h3>
+            <p class="small">Agent combining LangChain pipelines, FastAPI, and Gradio demo for literary critique.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- blog -->
+      <section id="blog">
+        <h2 style="margin-top:22px">Selected Writing</h2>
+        <div class="small">Short articles, project notes, and technical explainers.</div>
+        <div class="grid" style="margin-top:12px">
+          <div class="card" style="padding:18px">
+            <h3>Reproducing GIUNet: practical tips</h3>
+            <p class="small">Quick guide on running the experiments, required hardware, and gotchas.</p>
+            <div style="margin-top:8px"><a href="#" class="small" style="color:var(--accent)">Read →</a></div>
+          </div>
+          <div class="card" style="padding:18px">
+            <h3>Image Similarity at scale</h3>
+            <p class="small">Designing an image similarity pipeline that scales to millions of images.</p>
+            <div style="margin-top:8px"><a href="#" class="small" style="color:var(--accent)">Read →</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- contact -->
+      <section id="contact">
+        <h2 style="margin-top:22px">Contact</h2>
+        <div class="small">Let's build something nice together — email me or open an issue on GitHub.</div>
+        <div style="display:flex;gap:18px;margin-top:12px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:260px">
+            <h3>Email</h3>
+            <p class="small">your.email@example.com</p>
+            <h3 style="margin-top:12px">Resume</h3>
+            <p class="small"><a href="#" style="color:var(--accent)">Download PDF</a></p>
+          </div>
+
+          <div class="card" style="flex:1;min-width:260px">
+            <h3>Social</h3>
+            <p class="small">GitHub: <a href="#" style="color:inherit">github.com/yourname</a></p>
+            <p class="small">LinkedIn: <a href="#" style="color:inherit">linkedin.com/in/yourname</a></p>
+            <p class="small">Twitter/X: <a href="#" style="color:inherit">@yourhandle</a></p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="small">Built with ♥ — fork this template on GitHub • © <span id="year"></span> Your Name</div>
+    </footer>
+  </div>
+
+  <!-- modal -->
+  <div class="modal" id="modal">
+    <div class="modal-card card" id="modalCard">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div style="font-weight:700" id="modalTitle">Project</div>
+        <button onclick="closeModal()" style="background:transparent;border:0;color:var(--muted);cursor:pointer">Close</button>
+      </div>
+      <div id="modalBody" style="margin-top:12px" class="small"></div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <a id="modalRepo" class="btn btn-ghost" href="#">Open Repo</a>
+        <a id="modalDemo" class="btn btn-primary" href="#">Open Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // small dynamic behaviors
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const texts = ['ML Engineer', 'Researcher', 'Open-source maintainer', 'Problem solver'];
+    let i=0, j=0, isDeleting=false; let tw = document.getElementById('typeWriter');
+    function type(){
+      const full = texts[i];
+      tw.textContent = full.substring(0,j) + (isDeleting? '': '');
+      if(!isDeleting){ j++; if(j>full.length){ isDeleting=true; setTimeout(type, 900); return }} else { j--; if(j===0){ isDeleting=false; i=(i+1)%texts.length} }
+      setTimeout(type, isDeleting?60:120);
+    }
+    type();
+
+    // modal content
+    const projects = {
+      1: {title:'Image Similarity Search', body:'A production-grade image similarity system combining SigLIP2 + CLIP embeddings. Includes a Milvus vector store, feature extraction pipeline, and a FastAPI serving layer. Repro: docker-compose up; benchmark: recall@10=0.87, p95 latency=120ms.', repo:'#', demo:'#'},
+      2: {title:'GIUNet — Graph Isomorphism U‑Net', body:'Published in Expert Systems with Applications (2024). Repo contains training scripts, notebooks for reproducibility, and pre-trained models for standard graph datasets (MUTAG, PTC).', repo:'#', demo:'#'},
+      3: {title:'Fashion Tagger', body:'Tagging and organizing clothes using CLIP for tag extraction and a small recommender. Includes a FastAPI infer service and a script to batch-tag images.', repo:'#', demo:'#'},
+      4: {title:'Persian Ghazal Criticizer Agent', body:'A multi-pipeline agent with LangChain and Gradio demo for critiquing Persian ghazals. Designed for parallel evaluation and scoring.', repo:'#', demo:'#'}
+    };
+
+    function openProject(id){
+      const p = projects[id];
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalBody').textContent = p.body;
+      document.getElementById('modalRepo').href = p.repo;
+      document.getElementById('modalDemo').href = p.demo;
+      document.getElementById('modal').classList.add('open');
+    }
+    function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+
+    // theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+    })
+  </script>
+</body>
+</html>
