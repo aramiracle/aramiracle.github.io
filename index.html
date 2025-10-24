@@ -7,72 +7,87 @@
   <meta name="description" content="Alireza Amouzad — ML engineer. Research + production ML: GIUNet (Expert Systems 2024), image similarity, medical imaging, RL agents." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Mono&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#06071a;--card:#081028;--muted:#9fb0c8;--accent:#7c3aed;--accent2:#06b6d4;--glass:rgba(255,255,255,0.03)}
+    :root{
+      --bg1:#040617; --bg2:#07182a; --accent1:#7c3aed; --accent2:#06b6d4; --muted:#9fb0c8; --card:#071126;
+    }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent), linear-gradient(180deg,var(--bg),#041021);color:#e8f1fb}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:radial-gradient(800px 400px at 12% 10%, rgba(124,58,237,0.12), transparent), linear-gradient(180deg,var(--bg1),var(--bg2));color:#e8f1fb}
     a{color:inherit}
-    .wrap{max-width:1080px;margin:0 auto;padding:36px}
+    .wrap{max-width:1200px;margin:0 auto;padding:36px}
+
+    /* animated gradient background */
+    .bg-anim{position:fixed;inset:0;z-index:-1;pointer-events:none;background:conic-gradient(from 180deg at 50% 50%, rgba(124,58,237,0.06), rgba(6,182,212,0.06), rgba(96,165,250,0.05), rgba(124,58,237,0.06));filter:blur(120px);opacity:0.9;animation:spin 45s linear infinite}
+    @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
     /* header */
     header{display:flex;align-items:center;justify-content:space-between;gap:18px}
     .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-family:Space Mono}
-    h1{font-size:34px;margin:0}
+    .logo{width:72px;height:72px;border-radius:16px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-family:Space Mono;font-size:20px}
+    h1{font-size:36px;margin:0}
     .tag{color:var(--muted);font-size:14px}
 
     /* hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:20px;align-items:start}
-    .intro{padding:22px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .hero{display:grid;grid-template-columns:1fr 460px;gap:28px;margin-top:22px;align-items:start}
+    .intro{padding:26px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.008));box-shadow:0 20px 50px rgba(2,6,23,0.6);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.03)}
     .intro p{color:var(--muted);margin:12px 0 18px}
     .chips{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{background:var(--glass);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+    .chip{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--muted);backdrop-filter: blur(4px);border:1px solid rgba(255,255,255,0.02)}
     .cta{display:flex;gap:10px;margin-top:12px}
-    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-    .primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:white}
+    .btn{padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:800}
+    .primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;box-shadow:0 8px 30px rgba(124,58,237,0.14)}
     .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
     /* right column */
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.008));padding:16px;border-radius:14px}
     .meta{display:flex;gap:12px;align-items:center}
-    .avatar{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-family:Space Mono}
+    .avatar{width:88px;height:88px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-family:Space Mono}
     .small{color:var(--muted);font-size:13px}
+
+    /* 3D tilt + reveal */
+    .project, .card{transform:translateZ(0);transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s}
+    .tilt{will-change:transform}
+    .tilt:hover{transform:translateY(-8px) translateZ(6px) scale(1.01);box-shadow:0 30px 60px rgba(2,6,23,0.6)}
 
     /* timeline / experience */
     .timeline{margin-top:18px;display:flex;flex-direction:column;gap:12px}
     .exp{display:flex;gap:14px}
-    .exp .left{width:110px;color:var(--muted);font-size:13px}
-    .exp .right{flex:1;padding:12px;border-radius:10px;background:rgba(255,255,255,0.01)}
+    .exp .left{width:120px;color:var(--muted);font-size:13px}
+    .exp .right{flex:1;padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02)}
     .exp h4{margin:0 0 6px}
     .exp ul{margin:6px 0 0;padding-left:18px;color:var(--muted)}
 
     /* projects */
     section.projects{margin-top:26px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-    .project{padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.008));border:1px solid rgba(255,255,255,0.02);transition:transform .22s ease,box-shadow .22s}
-    .project:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.5)}
-    .project h3{margin:0 0 6px}
+    .project{padding:14px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02);overflow:hidden}
+    .project:hover{box-shadow:0 30px 60px rgba(2,6,23,0.55);transform:translateY(-10px)}
+    .project h3{margin:0 0 8px}
     .project p{color:var(--muted);font-size:14px;margin:0}
     .project .tech{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
     .tag2{background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted)}
 
+    .thumb{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;border:1px solid rgba(255,255,255,0.03)}
+
     /* publication */
-    .pub{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);border:1px dashed rgba(255,255,255,0.02)}
+    .pub{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.01);border:1px dashed rgba(255,255,255,0.02)}
 
-    /* footer */
-    footer{margin-top:30px;padding:20px;text-align:center;color:var(--muted);font-size:13px}
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
 
-    @media (max-width:980px){.hero{grid-template-columns:1fr}.brand h1{font-size:20px}}
+    /* contact */
+    .contact-grid{display:flex;gap:12px;flex-wrap:wrap}
+    .contact-card{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02)}
 
-    /* subtle animated background nodes */
-    .nodes{position:fixed;inset:0;pointer-events:none;mix-blend-mode:screen}
-    .node{position:absolute;border-radius:999px;filter:blur(30px);opacity:0.12}
+    /* reveal animation */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.brand h1{font-size:22px}.gallery{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
 <body>
-  <div class="nodes" aria-hidden>
-    <div class="node" style="width:360px;height:360px;left:8%;top:6%;background:linear-gradient(135deg,var(--accent),var(--accent2))"></div>
-    <div class="node" style="width:260px;height:260px;right:6%;bottom:10%;background:linear-gradient(135deg,#06b6d4,#60a5fa)"></div>
-  </div>
+  <div class="bg-anim" aria-hidden></div>
 
   <main class="wrap">
     <header>
@@ -83,15 +98,16 @@
           <div class="tag">Machine Learning Engineer — Research + Production</div>
         </div>
       </div>
-      <div class="small">Tehran, Iran • <a href="https://github.com/aramiracle" target="_blank">github.com/aramiracle</a></div>
+      <div class="small">Based in Tehran, Iran • <a href="https://github.com/aramiracle" target="_blank">github.com/aramiracle</a></div>
     </header>
 
     <div class="hero">
-      <div class="intro card">
-        <div style="display:flex;align-items:center;justify-content:space-between">
-          <div>
-            <div style="font-weight:800;font-size:18px">Summary</div>
+      <div class="intro card tilt reveal">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+          <div style="flex:1">
+            <div style="font-weight:900;font-size:18px">Summary</div>
             <p>Results-driven ML Engineer with 3+ years of experience in research and production. I build models (GIUNet), production ML microservices, and scalable inference pipelines — bridging research rigor with engineering reliability. I focus on interpretability, reproducibility, and shipping features that move product metrics.</p>
+
             <div class="chips">
               <div class="chip">PyTorch</div>
               <div class="chip">FastAPI</div>
@@ -99,34 +115,39 @@
               <div class="chip">LangChain</div>
               <div class="chip">GNNs</div>
             </div>
-          </div>
-          <div style="text-align:right">
-            <div class="small">Contact</div>
-            <div style="font-weight:700">+98 938 196 1903</div>
-            <div class="small">a.r.amouzad.m@gmail.com</div>
-            <div style="margin-top:8px" class="small">Resume: <a href="./Alireza_Amouzad_Resume.pdf" download>Download PDF</a></div>
-          </div>
-        </div>
 
-        <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
-          <a class="btn primary" href="#projects">Explore Projects</a>
-          <a class="btn ghost" href="#contact">Get in touch</a>
-        </div>
-
-        <div style="margin-top:16px" class="small">Open-source & writing: <a href="https://medium.com/@a.r.amouzad.m" target="_blank">Medium</a> • <a href="https://ir.linkedin.com/in/alireza-amouzad-71104b82" target="_blank">LinkedIn</a></div>
-      </div>
-
-      <aside>
-        <div class="card">
-          <div class="meta">
-            <div class="avatar">AA</div>
-            <div>
-              <div style="font-weight:800">Machine Learning Engineer</div>
-              <div class="small">Amirkabir MSc — GIUNet (Expert Systems 2024)</div>
+            <div class="cta">
+              <a class="btn primary" href="#projects">Explore Projects</a>
+              <a class="btn ghost" href="#contact">Get in touch</a>
             </div>
           </div>
 
-          <div class="timeline">
+          <div style="width:240px;text-align:center">
+            <!-- hero image relevant to ML -->
+            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981f?auto=format&fit=crop&w=800&q=80" alt="AI illustration" style="width:100%;border-radius:12px;box-shadow:0 18px 40px rgba(2,6,23,0.6)">
+            <div class="small" style="margin-top:8px">AI systems, model lifecycle & deployment</div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:10px;align-items:center;justify-content:space-between">
+          <div class="small">Open-source & writing: <a href="https://medium.com/@a.r.amouzad.m" target="_blank">Medium</a> • <a href="https://ir.linkedin.com/in/alireza-amouzad-71104b82" target="_blank">LinkedIn</a></div>
+          <div>
+            <a class="btn primary" href="./Alireza_Amouzad_Resume.pdf" download>Download Resume</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="reveal">
+        <div class="card tilt">
+          <div class="meta">
+            <div class="avatar">AA</div>
+            <div>
+              <div style="font-weight:900">Machine Learning Engineer</div>
+              <div class="small">MSc in AI — Amirkabir University • Published: Expert Systems (2024)</div>
+            </div>
+          </div>
+
+          <div class="timeline" style="margin-top:12px">
             <div class="exp">
               <div class="left">Aug 2023 — Mar 2025</div>
               <div class="right">
@@ -149,16 +170,6 @@
                 </ul>
               </div>
             </div>
-
-            <div class="exp">
-              <div class="left">2017 — 2019</div>
-              <div class="right">
-                <h4>Allameh Helli High School — Programming Teacher</h4>
-                <ul>
-                  <li>Taught Python and algorithms; mentored students to national contest success and Olympiad medals.</li>
-                </ul>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -167,7 +178,7 @@
 
         <div class="card pub">
           <div style="flex:1">
-            <div style="font-weight:700">Publication</div>
+            <div style="font-weight:900">Publication</div>
             <div class="small">Graph Isomorphism U‑Net — Expert Systems With Applications, 2024</div>
             <div style="margin-top:8px"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417423017827" target="_blank" class="small">Read paper →</a></div>
           </div>
@@ -175,41 +186,55 @@
       </aside>
     </div>
 
-    <section id="projects" class="projects">
+    <section id="projects" class="projects reveal">
       <h2 style="margin:0 0 8px">Selected Projects</h2>
       <div class="small">Projects pulled from my resume — reproducible repos and demos.</div>
       <div class="grid" style="margin-top:12px">
-        <div class="project">
+        <div class="project tilt">
+          <img class="thumb" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80" alt="image similarity">
           <h3>Image Similarity Search — SigLIP2 + CLIP</h3>
           <p>Production-ready multimodal retrieval using SigLIP2+CLIP embeddings, Milvus vector store, and MinIO for S3 storage. Async embeddings, batch indexing, FastAPI endpoints and Gradio UI.</p>
           <div class="tech"><span class="tag2">PyTorch</span><span class="tag2">FastAPI</span><span class="tag2">Milvus</span><span class="tag2">Docker</span></div>
           <div style="margin-top:10px"><a href="https://github.com/aramiracle/multimodal-rag" target="_blank">Repo →</a></div>
         </div>
 
-        <div class="project">
+        <div class="project tilt">
+          <img class="thumb" src="https://images.unsplash.com/photo-1581093588401-2b9b4a9f8b6f?auto=format&fit=crop&w=1400&q=80" alt="giunet">
           <h3>GIUNet — Graph Isomorphism U‑Net</h3>
-          <p>My MSc thesis — a novel U‑Net style GNN with pqPooling achieving SOTA on MUTAG, PTC, ENZYMES. Includes training scripts and analysis notebooks.</p>
+          <p>My MSc thesis — a novel U‑Net style GNN with pqPooling achieving strong results on MUTAG, PTC, ENZYMES. Includes training scripts and analysis notebooks.</p>
           <div class="tech"><span class="tag2">PyTorch</span><span class="tag2">PyG</span><span class="tag2">GNN</span></div>
           <div style="margin-top:10px"><a href="https://github.com/aramiracle/GIUNet" target="_blank">Repo →</a></div>
         </div>
 
-        <div class="project">
+        <div class="project tilt">
+          <img class="thumb" src="https://images.unsplash.com/photo-1520975913275-7c34f62e9a88?auto=format&fit=crop&w=1400&q=80" alt="ghazal agent">
           <h3>Persian Ghazal Criticizer Agent</h3>
           <p>An agent built with LangChain and Gradio for automated critique of Persian ghazals — parallel evaluation pipelines and structured outputs.</p>
           <div class="tech"><span class="tag2">LangChain</span><span class="tag2">FastAPI</span><span class="tag2">Gradio</span></div>
           <div style="margin-top:10px"><a href="https://github.com/aramiracle/ghazal_critique_agent" target="_blank">Repo →</a></div>
         </div>
 
-        <div class="project">
+        <div class="project tilt">
+          <img class="thumb" src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80" alt="rl games">
           <h3>Connect Four &amp; Pentago (RL)</h3>
           <p>Self‑play RL agents trained with DQN-style algorithms and PyTorch; GUI with PyQt for play & visualization.</p>
           <div class="tech"><span class="tag2">RL</span><span class="tag2">PyTorch</span><span class="tag2">Gym</span></div>
           <div style="margin-top:10px"><a href="https://github.com/aramiracle/connect_four_with_rl" target="_blank">Connect Four →</a> • <a href="https://github.com/aramiracle/pentago_with_rl" target="_blank">Pentago →</a></div>
         </div>
       </div>
+
+      <div style="margin-top:18px" class="card">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="https://images.unsplash.com/photo-1588774066266-1b2f3e2f1e2a?auto=format&fit=crop&w=800&q=80" alt="paper" style="width:92px;height:92px;border-radius:10px;object-fit:cover">
+          <div>
+            <div style="font-weight:900">GIUNet Publication</div>
+            <div class="small">Graph Isomorphism U‑Net — Expert Systems With Applications, 2024 • <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417423017827" target="_blank">Read paper</a></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section style="margin-top:26px">
+    <section class="reveal" style="margin-top:26px">
       <h2 style="margin:0 0 8px">Skills & Tools</h2>
       <div class="small">Languages, frameworks, and tools I use in production</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
@@ -225,41 +250,52 @@
         <div class="chip">PyG / GNNs</div>
         <div class="chip">Git / Pytest</div>
       </div>
+
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1581091012184-8bd6f86a2b1a?auto=format&fit=crop&w=1400&q=80" alt="medical imaging">
+        <img src="https://images.unsplash.com/photo-1528360983277-3d7b8a4b3dd3?auto=format&fit=crop&w=1400&q=80" alt="fashion-clothes">
+        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=80" alt="poetry calligraphy">
+      </div>
     </section>
 
-    <section style="margin-top:26px" id="contact">
+    <section style="margin-top:26px" id="contact" class="reveal">
       <h2 style="margin:0 0 8px">Contact & Links</h2>
       <div class="small">I'm happy to collaborate on research, production ML, or open-source projects.</div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
-        <div class="card" style="min-width:220px">
-          <div style="font-weight:700">Email</div>
+      <div class="contact-grid" style="margin-top:12px">
+        <div class="contact-card card" style="min-width:260px">
+          <div style="font-weight:900">Email</div>
           <div class="small">a.r.amouzad.m@gmail.com</div>
-          <div style="margin-top:10px;font-weight:700">Phone</div>
-          <div class="small">+98 938 196 1903</div>
+          <div style="margin-top:10px;font-weight:900">Resume</div>
+          <div class="small"><a class="primary" href="./Alireza_Amouzad_Resume.pdf" download style="display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;text-decoration:none;margin-top:6px">Download Full Resume</a></div>
         </div>
 
-        <div class="card" style="min-width:220px">
-          <div style="font-weight:700">Profiles</div>
+        <div class="contact-card card" style="min-width:260px">
+          <div style="font-weight:900">Profiles</div>
           <div class="small"><a href="https://github.com/aramiracle" target="_blank">GitHub</a></div>
           <div class="small"><a href="https://ir.linkedin.com/in/alireza-amouzad-71104b82" target="_blank">LinkedIn</a></div>
           <div class="small"><a href="https://medium.com/@a.r.amouzad.m" target="_blank">Medium</a></div>
         </div>
 
-        <div class="card" style="flex:1;min-width:280px">
-          <div style="font-weight:700">Quick CV</div>
+        <div class="contact-card card" style="flex:1;min-width:300px">
+          <div style="font-weight:900">Quick CV</div>
           <div class="small">MSc in AI (Amirkabir University), Thesis: GIUNet (pqPooling). Published: Expert Systems With Applications (2024).</div>
-          <div style="margin-top:10px"><a class="btn primary" href="./Alireza_Amouzad_Resume.pdf" download>Download Full Resume</a></div>
         </div>
       </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> Alireza Amouzad • Built with care — fork & customize this template on GitHub
-    </footer>
+    <footer style="margin-top:28px">© <span id="year"></span> Alireza Amouzad • Built with care — fork & customize this template on GitHub</footer>
   </main>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // simple scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') })
+    },{threshold:0.12});
+    reveals.forEach(r=>io.observe(r));
+
     // small keyboard shortcut: press 'r' to download resume
     window.addEventListener('keydown', (e)=>{ if(e.key==='r'){ window.location.href='./Alireza_Amouzad_Resume.pdf' } })
   </script>
